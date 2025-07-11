@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-export const connectDB = async () => {
+dotenv.config();
+
+export const connectDB = async (): Promise<void> => {
   try {
-    const MONGO_URI = process.env.MONGO_URI || "";
+    const MONGO_URI = process.env.MONGODB_URI || "";
     await mongoose.connect(MONGO_URI);
     console.log("Conectado a MongoDB Atlas");
   } catch (error) {
